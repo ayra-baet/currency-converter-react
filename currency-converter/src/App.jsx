@@ -10,6 +10,17 @@ function App() {
 
   //const currencyInfo = useCurrencyInfo(baseCurrency);
   //const currencyCodes = currencyInfo ? Object.keys(currencyInfo) : [];
+
+  const swap = () => {
+    setBaseCurrency(targetCurrency);
+    setTargetCurrency(baseCurrency);
+    setAmount(convertedAmount);
+    setConvertedAmount(0);
+  }
+  
+  const convert =() => {
+    setConvertedAmount((amount * currencyInfo[baseCurrency]).toFixed(2));
+  }
   
   return(
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-b from-violet-600 to-indigo-600">
