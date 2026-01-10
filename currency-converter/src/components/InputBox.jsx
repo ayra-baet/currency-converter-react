@@ -7,7 +7,7 @@ function InputBox({
                     amountDisabled = false,
                     selectedCurrency = "USD",
                     onCurrencyChange,
-                    currencyOptions = []
+                    currencyDropdown = []
                  }) {
 
     const id = useId();
@@ -21,12 +21,13 @@ function InputBox({
                 >
                     {label}
                 </label>
-                <input 
+                <input
+                    placeholder={!amountDisabled ? "Enter amount here" : ""}
                     type="number" 
                     name="amount" 
                     id={id}
                     value={amount}
-                    onChange={(e) => onAmountChange?.Number(e.target.value)}
+                    onChange={(e) => onAmountChange?.(Number(e.target.value))}
                     disabled={amountDisabled}
                     className="outline-none w-full bg-transparent py-1.5" 
                 />
@@ -40,7 +41,7 @@ function InputBox({
                     onChange={(e) => onCurrencyChange?.(e.target.value)}
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                 >
-                    {currencyOptions.map(currency => (
+                    {currencyDropdown.map(currency => (
                         <option key={currency} value={currency}>{currency}</option>
                     ))}
                 </select>
